@@ -1,6 +1,7 @@
 """Pong!"""
 
 import pygame
+from random import randint
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -63,14 +64,15 @@ def model(screen):
     # No effect on gameplay
     pygame.draw.line(screen, WHITE, [WIDTH / 2, 0], [WIDTH / 2, HEIGHT], 5)  # https://www.pygame.org/docs/ref/draw.html#pygame.draw.line
 
+    """A. Draw: draw the 2 rectangular paddles and the circular ball on screen using pygame's predefined functions."""
     # Draw paddles and ball
-    pad1 = pygame.Rect([0, pad1_ypos - HALF_PAD_HEIGHT], [PAD_WIDTH, PAD_HEIGHT])  # https://www.pygame.org/docs/ref/draw.html#pygame.draw.rect tl;dr arguments are (left, top), (width, height)
+    pad1 = pygame.Rect([0, pad1_ypos - HALF_PAD_HEIGHT], [PAD_WIDTH, PAD_HEIGHT])  # https://www.pygame.org/docs/ref/rect.html tl;dr arguments are [left, top], [width, height]
     pad2 = pygame.Rect([WIDTH - PAD_WIDTH, pad2_ypos - HALF_PAD_HEIGHT], [PAD_WIDTH, PAD_HEIGHT])
     pygame.draw.rect(screen, WHITE, pad1)  # https://www.pygame.org/docs/ref/draw.html#pygame.draw.rect
     pygame.draw.rect(screen, WHITE, pad2)
     pygame.draw.circle(screen, WHITE, ball_pos, BALL_RADIUS)  # https://www.pygame.org/docs/ref/draw.html#pygame.draw.circle
 
-    """1. Paddles: check vertical bounds. Move paddle positions by their paddle velocity constants when appropriate."""
+    """B. Paddles: check vertical bounds. Move paddle positions by their paddle velocity constants when appropriate."""
     # Check paddle 1
     if pad1_ypos > HALF_PAD_HEIGHT and pad1_ypos < HEIGHT - HALF_PAD_HEIGHT:
         pad1_ypos += pad1_vel
@@ -79,7 +81,7 @@ def model(screen):
     elif pad1_ypos >= HEIGHT - HALF_PAD_HEIGHT and pad1_vel < 0:
         pad1_ypos += pad1_vel
 
-    # Check paddle 2 (should be the same as above, just with some variable name changes)
+    # Check paddle 2 (same as above, just with some variable name changes)
     if pad2_ypos > HALF_PAD_HEIGHT and pad2_ypos < HEIGHT - HALF_PAD_HEIGHT:
         pad2_ypos += pad2_vel
     elif pad2_ypos <= HALF_PAD_HEIGHT and pad2_vel > 0:
@@ -87,14 +89,14 @@ def model(screen):
     elif pad2_ypos >= HEIGHT - HALF_PAD_HEIGHT and pad2_vel < 0:
         pad2_ypos += pad2_vel
 
-    """2. Ball: check vertical bounds."""
+    """C. Ball: check vertical bounds."""
     # Check collisions with top and bottom walls
     if ball_pos[1] <= BALL_RADIUS:
         ball_vel[1] = -ball_vel[1]
     elif ball_pos[1] >= HEIGHT - BALL_RADIUS:
         ball_vel[1] = -ball_vel[1]
 
-    """3. Ball: check horizontal bounds."""
+    """D. Ball: check horizontal bounds."""
     # Check if ball crosses its left bound. Then handle case 1 - collision with paddle and case 2 - no collision with paddle, out of bounds
     if ball_pos[0] <= PAD_WIDTH + BALL_RADIUS - MAKES_BOUNCING_LOOK_NICER:  # this expression could (mathematically, it should - draw a diagram) just be PAD_WIDTH + BALL_RADIUS. But the constant makes it look better imo. An alternative is to use HALF_PAD_WIDTH instead of PAD_WIDTH, which is basically the same as using this constant.
         if ball_pos[1] >= pad1_ypos - HALF_PAD_HEIGHT and ball_pos[1] <= pad1_ypos + HALF_PAD_HEIGHT:
@@ -111,7 +113,7 @@ def model(screen):
             p1_points += 1
             initialize()
     
-    """4. Ball: update ball position."""
+    """E. Ball: update ball position."""
     ball_pos[0] += ball_vel[0]
     ball_pos[1] += ball_vel[1]
 
