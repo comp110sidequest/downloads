@@ -63,32 +63,32 @@ def model(screen):
 
     ### DO NOT MODIFY ###
 
-    """A. Draw: draw the 2 rectangular paddles and the circular ball on screen using 3 of pygame's predefined functions."""
+    """1. Draw: draw the two rectangular paddles and the circular ball on screen using 3 of pygame's predefined functions."""
     # Draw paddles and ball
     # pad1 = pygame.Rect([0, pad1_ypos - HALF_PAD_HEIGHT], [PAD_WIDTH, PAD_HEIGHT])  # https://www.pygame.org/docs/ref/rect.html tl;dr arguments are [left, top], [width, height]
     # https://www.pygame.org/docs/ref/draw.html#pygame.draw.rect
     # https://www.pygame.org/docs/ref/draw.html#pygame.draw.circle
 
-    """B. Paddles: check vertical bounds."""
+    """2. Paddles: check vertical bounds."""
     # TODO: IMPLEMENT
 
     # Check paddle 1
     
     # Check paddle 2 (should be the same as above, just with some variable name changes)
 
-    """C. Ball: check vertical bounds."""
+    """3. Ball: check vertical bounds."""
     # TODO: IMPLEMENT
 
     # Check collisions with top and bottom walls
 
-    """D. Ball: check horizontal bounds."""
+    """4. Ball: check horizontal bounds."""
     # TODO: IMPLEMENT
 
     # Check if ball crosses its left bound.
     
     # Check bounds on right side (should be almost the same as the code above)
     
-    """E. Ball: update ball position."""
+    """5. Ball: update ball position."""
     # TODO: IMPLEMENT
 
 
