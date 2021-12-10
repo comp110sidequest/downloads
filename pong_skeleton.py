@@ -21,7 +21,7 @@ BALL_VELOCITY = 4
 
 def main():
     """Entrypoint to pong program."""
-    ### DO NOT MODIFY THIS FUNCTION
+    ### DO NOT MODIFY THIS FUNCTION ###
     # Boilerplate code for pygame display
     pygame.init()
     screen = pygame.display.set_mode(SCREEN_SIZE)  # https://www.pygame.org/docs/ref/display.html#pygame.display.set_mode
@@ -30,19 +30,19 @@ def main():
     playing: bool = True
     clock = pygame.time.Clock()
 
-    initialize()  # Step 1: implement this function
+    initialize()  # Step 1: implement
     global p1_points, p2_points
     p1_points = 0
     p2_points = 0
 
-    while playing:  # Game loop
+    while playing:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 playing = False
         screen.fill(BLACK)
         keypress()  # Step 2: implement
         model(screen)  # Step 3: implement
-        pygame.display.update()  # https://www.pygame.org/docs/ref/display.html#pygame.display.flip
+        pygame.display.update()  # https://www.pygame.org/docs/ref/display.html#pygame.display.update
         clock.tick(60)  # https://www.pygame.org/docs/ref/time.html#pygame.time.Clock.tick
     
     print("Player 1 points: " + str(p1_points))
@@ -54,41 +54,41 @@ def main():
 # Step 3:
 def model(screen):
     """This function handles game logic and calculations."""
+    ### DO NOT MODIFY ###
     global pad1_ypos, pad2_ypos, pad1_vel, pad2_vel, p1_points, p2_points
 
-    ### DO NOT MODIFY
     # Draw net - horizontally centered vertical line
     # No effect on gameplay
     pygame.draw.line(screen, WHITE, [WIDTH / 2, 0], [WIDTH / 2, HEIGHT], 5)  # https://www.pygame.org/docs/ref/draw.html#pygame.draw.line
 
-    # Draw paddles and ball
-    pad1 = pygame.Rect([0, pad1_ypos - HALF_PAD_HEIGHT], [PAD_WIDTH, PAD_HEIGHT])  # https://www.pygame.org/docs/ref/draw.html#pygame.draw.rect tl;dr arguments are (left, top), (width, height)
-    pad2 = pygame.Rect([WIDTH - PAD_WIDTH, pad2_ypos - HALF_PAD_HEIGHT], [PAD_WIDTH, PAD_HEIGHT])
-    pygame.draw.rect(screen, WHITE, pad1)  # https://www.pygame.org/docs/ref/draw.html#pygame.draw.rect
-    pygame.draw.rect(screen, WHITE, pad2)
-    pygame.draw.circle(screen, WHITE, ball_pos, BALL_RADIUS)  # https://www.pygame.org/docs/ref/draw.html#pygame.draw.circle
-    ### DO NOT MODIFY
+    ### DO NOT MODIFY ###
 
-    """1. Paddles: check vertical bounds."""
+    """A. Draw: draw the 2 rectangular paddles and the circular ball on screen using 3 of pygame's predefined functions."""
+    # Draw paddles and ball
+    # pad1 = pygame.Rect([0, pad1_ypos - HALF_PAD_HEIGHT], [PAD_WIDTH, PAD_HEIGHT])  # https://www.pygame.org/docs/ref/rect.html tl;dr arguments are [left, top], [width, height]
+    # https://www.pygame.org/docs/ref/draw.html#pygame.draw.rect
+    # https://www.pygame.org/docs/ref/draw.html#pygame.draw.circle
+
+    """B. Paddles: check vertical bounds."""
     # TODO: IMPLEMENT
 
     # Check paddle 1
     
     # Check paddle 2 (should be the same as above, just with some variable name changes)
 
-    """2. Ball: check vertical bounds."""
+    """C. Ball: check vertical bounds."""
     # TODO: IMPLEMENT
 
     # Check collisions with top and bottom walls
 
-    """3. Ball: check horizontal bounds."""
+    """D. Ball: check horizontal bounds."""
     # TODO: IMPLEMENT
 
     # Check if ball crosses its left bound.
     
     # Check bounds on right side (should be almost the same as the code above)
     
-    """4. Ball: update ball position."""
+    """E. Ball: update ball position."""
     # TODO: IMPLEMENT
 
 
